@@ -10,7 +10,7 @@ querystring = require 'querystring'
 errors =
   no_token: 'Missing required options for roots-contentful. Please ensure
   `access_token` and `space_id` are present.'
-  no_type_id: 'One or more of your content types is missing an `id` value'
+  no_type_id: 'One or more of your content tfeypes is missing an `id` value'
   sys_conflict: 'One of your content types has `sys` as a field. This is
   reserved for storing Contentful system metadata, please rename this field to
   a different value.'
@@ -106,7 +106,7 @@ module.exports = (opts) ->
     fetch_content = (type) ->
       W(
         client.entries(
-          _.merge(type.filters, content_type: type.id, include: 10)
+          _.merge(type.filters, content_type: type.id, include: 10, limit: 1000)
         )
       )
 
