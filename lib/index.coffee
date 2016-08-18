@@ -106,7 +106,8 @@ module.exports = (opts) ->
     fetch_content = (type) ->
       W(
         client.entries(
-          _.merge(type.filters, content_type: type.id, include: 10, limit: 1000)
+          _.merge(type.filters, content_type: type.id, include: 3)
+          console.log 'hi'
         )
       )
 
