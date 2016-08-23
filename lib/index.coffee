@@ -105,8 +105,9 @@ module.exports = (opts) ->
 
     fetch_content = (type) ->
       W(
+        # if !(type.filters.include) then type.filters.include = 3
         client.entries(
-          _.merge(type.filters, content_type: type.id, include: 3)
+          _.merge(type.filters, content_type: type.id, include: if type.filters.include? then type.filters.include else 3)
         )
       )
 
