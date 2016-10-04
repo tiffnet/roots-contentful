@@ -39,6 +39,7 @@ module.exports =
           filters: { 'fields.environment[in]': ['staging', 'production'] }
           path: (e) -> "blogging/#{e.category}/#{slugify(e.title)}"
           write: 'data.json'
+          limit: 3
           sort: compareFunction
           transform: transformFunction
         press_links:
@@ -144,6 +145,10 @@ Optional. This is the name of the key the entries will be attached to on the `co
 #### template
 
 Optional. Path relative to the roots project of a template for a single entry view. Each entry in the Content Type will be passed into the template in an `entry` variable. If not given, the Content Type will not be compiled into single entry views and will only be attached to the `contentful` view helper object.
+
+#### limit
+
+Optional. Corresponds to Contentful's [`include`](https://www.contentful.com/developers/docs/concepts/links/) parameter to limit the number of linked entries returned. Defaults to `3`.
 
 #### filters
 
