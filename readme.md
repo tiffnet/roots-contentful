@@ -39,7 +39,8 @@ module.exports =
           filters: { 'fields.environment[in]': ['staging', 'production'] }
           path: (e) -> "blogging/#{e.category}/#{slugify(e.title)}"
           write: 'data.json'
-          limit: 3
+          limit: 100
+          include: 0
           sort: compareFunction
           transform: transformFunction
         press_links:
@@ -148,7 +149,11 @@ Optional. Path relative to the roots project of a template for a single entry vi
 
 #### limit
 
-Optional. Corresponds to Contentful's [`include`](https://www.contentful.com/developers/docs/concepts/links/) parameter to limit the number of linked entries returned. Defaults to `3`.
+Optional (defaults to `100`). Limits the number of entries returned.
+
+#### include
+
+Optional (defaults to `3`). Corresponds to Contentful's [`include`](https://www.contentful.com/developers/docs/concepts/links/) parameter to limit the number of linked entries returned.
 
 #### filters
 
